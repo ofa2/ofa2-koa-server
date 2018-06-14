@@ -63,5 +63,18 @@ function lift() {
   }
 }
 
-module.exports = lift;
+function lower() {
+  return new Promise((resolve, reject) => {
+    this.server.close(err => {
+      return err ? reject(err) : resolve();
+    });
+  });
+}
+
+var index = {
+  lift,
+  lower
+};
+
+module.exports = index;
 //# sourceMappingURL=bundle.cjs.js.map
